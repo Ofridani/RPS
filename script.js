@@ -27,3 +27,28 @@ function getHumanChoice(){
             return "Scissors";
     }
 }
+
+let humanScore = 0, computerScore=0;
+
+function playRound(humanChoice, computerChoice){
+    if (humanChoice == computerChoice){
+        return;
+    }
+    switch(humanChoice[0]+computerChoice[0]){
+        case ("RS"):
+            humanScore++;
+            return;
+        case ("PR"):
+            humanScore++;
+            return;
+        case ("SP"):
+            humanScore++;
+            return;
+        default:
+            computerScore++;
+            return;
+    }
+}
+
+playRound("Rock", "Scissors");
+console.log(humanScore, computerScore)
