@@ -28,27 +28,32 @@ function getHumanChoice(){
     }
 }
 
-let humanScore = 0, computerScore=0;
+function playGame() // Play a game of 5 rounds
+{
+    let humanScore = 0, computerScore=0;
+    function playRound(humanChoice, computerChoice){
+        if (humanChoice == computerChoice){
+            return;
+        }
+        switch(humanChoice[0]+computerChoice[0]){
+            case ("RS"):
+                humanScore++;
+                return;
+            case ("PR"):
+                humanScore++;
+                return;
+            case ("SP"):
+                humanScore++;
+                return;
+            default:
+                computerScore++;
+                return;
+        }
+    }
+    
+    for (let i = 0; i < 5; i++){
+        playRound(getHumanChoice(), getComputerChoice());
+    }
 
-function playRound(humanChoice, computerChoice){
-    if (humanChoice == computerChoice){
-        return;
-    }
-    switch(humanChoice[0]+computerChoice[0]){
-        case ("RS"):
-            humanScore++;
-            return;
-        case ("PR"):
-            humanScore++;
-            return;
-        case ("SP"):
-            humanScore++;
-            return;
-        default:
-            computerScore++;
-            return;
-    }
 }
 
-playRound("Rock", "Scissors");
-console.log(humanScore, computerScore)
