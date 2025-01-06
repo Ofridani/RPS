@@ -50,10 +50,11 @@ function playGame() // Play a game of 5 rounds
                 return;
         }
     }
-    
+
     for (let i = 0; i < 5; i++){
         playRound(getHumanChoice(), getComputerChoice());
     }
-
+    humanScore > computerScore ? alert("You win!") : alert("Computer Wins...")
 }
 
+playGame()
