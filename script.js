@@ -5,8 +5,14 @@ class Game{
         this.computerScore = 0;
         this.rounds = 0;
         this.finished = false;
+        this.bindButtons();
     }
 
+    bindButtons(){
+        const btns = document.querySelectorAll("button");
+        btns.forEach((btn) => btn.addEventListener("click", () => game.playRound(btn.id)));
+    }
+    
     getComputerChoice(){
         const choice = Math.floor(Math.random() * 3);
         switch (choice)
@@ -64,5 +70,3 @@ class Game{
 }
 
 const game = new Game();
-const btns = document.querySelectorAll("button");
-btns.forEach((btn) => btn.addEventListener("click", () => game.playRound(btn.id)));
