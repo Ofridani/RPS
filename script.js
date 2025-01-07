@@ -4,6 +4,7 @@ class Game{
         this.humanScore = 0;
         this.computerScore = 0;
         this.rounds = 0;
+        this.finished = false;
     }
 
     getComputerChoice(){
@@ -29,14 +30,14 @@ class Game{
             const winnerElement = document.createElement("div");
             winnerElement.textContent = this.humanScore > this.computerScore ? "You win!" : "You lose!";
             container.appendChild(winnerElement);
+            this.finished = true;
         }
     }
 
-    resetBoard(){
-        
-    }
-
     playRound(humanChoice){
+        if (this.finished){
+            return;
+        }
         let computerChoice = this.getComputerChoice();
         this.rounds++;
         if (humanChoice === computerChoice){
