@@ -20,11 +20,13 @@ class Game{
         }
     }
 
-    updateBoard(){
+    updateBoard(computerChoice){
         const humanScoreElement = document.querySelector("#humanScore");
         const computerScoreElement = document.querySelector("#computerScore");
         humanScoreElement.textContent = `You: ${this.humanScore}`;
         computerScoreElement.textContent = `Computer: ${this.computerScore}`;
+        const computerChoiceElement = document.querySelector("#computerChoice");
+        computerChoiceElement.textContent = `Computer chose: ${computerChoice}`;
         if (this.rounds >= 5){
             const container = document.querySelector(".container");
             const winnerElement = document.createElement("div");
@@ -57,10 +59,10 @@ class Game{
                 this.computerScore++;
             }
         }
-        this.updateBoard();
+        this.updateBoard(computerChoice);
     }
 }
 
-game = new Game();
+const game = new Game();
 const btns = document.querySelectorAll("button");
 btns.forEach((btn) => btn.addEventListener("click", () => game.playRound(btn.id)));
