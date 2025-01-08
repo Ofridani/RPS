@@ -6,6 +6,10 @@ class Game{
         this.rounds = 0;
         this.finished = false;
         this.bindButtons();
+
+        this.humanScoreElement = document.querySelector("#humanScore");
+        this.computerScoreElement = document.querySelector("#computerScore");
+        this.computerChoiceElement = document.querySelector("#computerChoice");
     }
 
     bindButtons(){
@@ -27,12 +31,9 @@ class Game{
     }
 
     updateBoard(computerChoice){
-        const humanScoreElement = document.querySelector("#humanScore");
-        const computerScoreElement = document.querySelector("#computerScore");
-        humanScoreElement.textContent = `You: ${this.humanScore}`;
-        computerScoreElement.textContent = `Computer: ${this.computerScore}`;
-        const computerChoiceElement = document.querySelector("#computerChoice");
-        computerChoiceElement.textContent = `Computer chose: ${computerChoice}`;
+        this.humanScoreElement.textContent = `You: ${this.humanScore}`;
+        this.computerScoreElement.textContent = `Computer: ${this.computerScore}`;
+        this.computerChoiceElement.textContent = `Computer chose: ${computerChoice}`;
         if (this.rounds >= 5){
             const container = document.querySelector(".container");
             const winnerElement = document.createElement("div");
@@ -49,7 +50,7 @@ class Game{
         let computerChoice = this.getComputerChoice();
         this.rounds++;
         if (humanChoice === computerChoice){
-            this.updateBoard();
+            this.updateBoard(computerChoice);
             return;
         }
         switch(humanChoice[0]+computerChoice[0]){
